@@ -11,6 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFirestoreModule } from '../../node_modules/@angular/fire/firestore';
+
 import { environment } from '../environments/environment';
 
 import { HeaderComponent } from './navigation/header/header.component';
@@ -19,7 +21,6 @@ import { AuthService } from './auth/auth.service';
 import { TrainingService } from './training/training.service';
 import { UIService } from './shared/ui.service';
 import { AuthModule } from './auth/auth.module';
-import { TrainingModule } from './training/training.module';
 
 @NgModule({
   declarations: [
@@ -35,10 +36,10 @@ import { TrainingModule } from './training/training.module';
     MaterialModule,
     AppRoutingModule,
     FlexLayoutModule,
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireModule.initializeApp(environment.firebase, 'my-app-name'), // imports firebase/app needed for everything
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
-    AuthModule,
-    TrainingModule,
+    AuthModule
   ],
   providers: [AuthService, TrainingService, UIService],
   bootstrap: [AppComponent],
