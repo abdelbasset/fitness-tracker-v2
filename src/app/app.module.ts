@@ -21,6 +21,7 @@ import { AuthService } from './auth/auth.service';
 import { TrainingService } from './training/training.service';
 import { UIService } from './shared/ui.service';
 import { AuthModule } from './auth/auth.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AuthModule } from './auth/auth.module';
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireModule.initializeApp(environment.firebase, 'my-app-name'), // imports firebase/app needed for everything
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
-    AuthModule
+    AuthModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [AuthService, TrainingService, UIService],
   bootstrap: [AppComponent],
